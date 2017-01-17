@@ -103,6 +103,31 @@
                   '<(libchromiumcontent_dir)/obj/net/libhttp_server.a',
                   '<(libchromiumcontent_dir)/obj/third_party/libyuv/libyuv.a',
                   '<(libchromiumcontent_dir)/obj/ui/events/libdom_keycode_converter.a',
+                  # Friends of pdf.lib:
+                  '<(libchromiumcontent_dir)/obj/pdf/libpdf.a',
+                  '<(libchromiumcontent_dir)/obj/ppapi/cpp/libobjects.a',
+                  '<(libchromiumcontent_dir)/obj/ppapi/cpp/private/libinternal_module.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/libjpeg_turbo/libjpeg.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/libjpeg_turbo/libsimd.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/libjpeg_turbo/libsimd_asm.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/libpdfium.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/libfdrm.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/libformfiller.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/libfpdfapi.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/libfpdfdoc.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/libfpdftext.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/libfxcodec.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/libfxcrt.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/libfxedit.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/libfxge.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/libfxjs.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/libjavascript.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/libpdfwindow.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/third_party/libbigint.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/third_party/libfx_agg.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/third_party/libfx_lcms2.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/third_party/libfx_libopenjpeg.a',
+                  '<(libchromiumcontent_dir)/obj/third_party/pdfium/third_party/libfx_zlib.a',
                 ],
                 'conditions': [
                   ['target_arch=="arm"', {
@@ -141,7 +166,9 @@
               # would cause missing symbols error, why?
               'link_settings': {
                 'libraries': [
+                  '-Wl,--whole-archive',
                   '<(other_libraries)',
+                  '-Wl,--no-whole-archive',
                 ],
               },
             }, {
